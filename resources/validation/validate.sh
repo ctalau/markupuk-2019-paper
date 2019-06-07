@@ -30,4 +30,4 @@ java -jar bin/saxon9.jar resources/validation/paper.sch $SCHEMATRON_DIR/iso_dsdl
 java -jar bin/saxon9.jar bin/tmp/paper-includes.sch $SCHEMATRON_DIR/iso_abstract_expand.xsl > bin/tmp/paper-expanded.sch
 java -jar bin/saxon9.jar bin/tmp/paper-expanded.sch $SCHEMATRON_DIR/iso_svrl_for_xslt2.xsl > bin/tmp/paper-validate.xsl
 java -jar bin/saxon9.jar paper.xml bin/tmp/paper-validate.xsl > bin/tmp/paper.svrl
-java -jar bin/svrl-to-sonar.jar bin/tmp/paper.svrl > bin/tmp/sonar-schematron.json
+java -jar bin/svrl-to-sonar.jar bin/tmp/paper.svrl `pwd` > bin/tmp/sonar-schematron.json
