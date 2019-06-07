@@ -17,7 +17,8 @@ zip -r out/$DELIVERABLE . -x bin/\* resources/\* out/\* .git/\* \*.xpr \
   netlify.toml \
   LICENSE
 
-EDIT_URL="https://www.oxygenxml.com/oxygen-xml-web-author/app/oxygen.html?url=gitgh%3A%2F%2Fhttps%253A%252F%252Fgithub.com%252F${USER}%252F${REPO}%2F${BRANCH}%2F${SOURCE}"
+EDITOR_URL="http://localhost:8080/oxygen-xml-web-author/app/oxygen.html"
+EDIT_URL="${EDITOR_URL}?url=gitgh%3A%2F%2Fhttps%253A%252F%252Fgithub.com%252F${USER}%252F${REPO}%2F${BRANCH}%2F${SOURCE}"
 echo "window.REPO_LINK = \"${CLEAN_REPO_URL}\";" > out/params.js
 echo "window.EDIT_LINK = \"${EDIT_URL}\";" >> out/params.js
 
