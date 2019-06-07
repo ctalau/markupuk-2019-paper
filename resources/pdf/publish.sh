@@ -1,4 +1,4 @@
-OXY_VERSION="21.0.0.0"
+OXY_VERSION="21.1.0.0"
 if [ "$OS" = "Windows_NT" ] ; then
     pathSepChar=";"
 else
@@ -10,7 +10,7 @@ mkdir -p bin
 echo "Downloading the DocBook framework"
 if [[ ! -e bin/docbook ]];
 then
-  curl -q https://www.oxygenxml.com/maven/com/oxygenxml/frameworks/21.0.0.0/frameworks-21.0.0.0.zip > bin/frameworks.zip
+  curl -q https://www.oxygenxml.com/maven/com/oxygenxml/frameworks/21.1.0.0/frameworks-21.1.0.0.zip > bin/frameworks.zip
   unzip -q bin/frameworks.zip -d bin/
 fi
 
@@ -31,8 +31,8 @@ mkdir -p out
 
 
 echo "Generating output"
-java -jar bin/saxon.jar paper.xml resources/pdf/addPlaceholders.xsl > out/processed_paper.xml
-java -cp "bin/saxon.jar${pathSepChar}bin/docbook/xsl/extensions/xslthl.jar" com.icl.saxon.StyleSheet out/processed_paper.xml bin/docbook/xsl/fo/docbook_custom.xsl \
+java -jar bin/saxon.jar paper.xml resources/pdf/addPlaceholders.xsl > processed_paper.xml
+java -cp "bin/saxon.jar${pathSepChar}bin/docbook/xsl/extensions/xslthl.jar" com.icl.saxon.StyleSheet processed_paper.xml bin/docbook/xsl/fo/docbook_custom.xsl \
   admon.graphics=1 \
   admon.graphics.extension=.png \
   admon.graphics.path=bin/docbook/css/img/ \
@@ -49,5 +49,5 @@ java -cp "bin/saxon.jar${pathSepChar}bin/docbook/xsl/extensions/xslthl.jar" com.
 
 export OS=Linux 
 bash bin/fop-2.1/fop out/paper.fo out/paper.pdf
-rm out/paper.fo out/processed_paper.xml
+rm out/paper.fo processed_paper.xml
 echo "Done"
