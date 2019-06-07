@@ -33,11 +33,30 @@
 				<p>You can download all the source files for your paper.</p>
 				<div class="button-container"><a class="button" href="markupuk.zip">Download deliverable</a></div>
 			</section>
+			<section id="sonar-enabled">
+				<h1>Validation report</h1>
+				<p>You can view a report of the validation problems in your paper.</p>
+				<div class="button-container"><a class="button" id="sonar-link">See report</a></div>
+			</section>
+      <section id="sonar-disabled">
+				<h1>Validation report</h1>
+				<p>You need to set the <code>SONAR_TOKEN</code> and <code>SONAR_ORGANIZATION</code> environment variables 
+        in the Netlify project to publish the report.
+			</section>
 		</div>
 
 		<script>
             document.getElementById('edit-link').href = window.EDIT_LINK;
             document.getElementById('repo-link').href = window.REPO_LINK;
+            document.getElementById('sonar-link').href = 
+              'https://sonarcloud.io/dashboard?id=' + window.SONAR_PROJECT;
+            var sonarEnabled = document.getElementById('sonar-enabled');
+            var sonarDisabled = document.getElementById('sonar-disabled');
+            if (window.SONAR_PROJECT) {
+              sonarDisabled.style.display = 'none';
+            } else {
+              sonarEnabled.style.display = 'none';
+            }
         </script>
 	</body>
 </html>
