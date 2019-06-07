@@ -8,6 +8,7 @@ DELIVERABLE=markupuk.zip
 
 # Publish the PDF
 . resources/pdf/publish.sh
+. resources/validation/sonar.sh
 
 # Generate the submission bundle
 zip -r out/$DELIVERABLE . -x bin/\* resources/\* out/\* .git/\* \*.xpr \
